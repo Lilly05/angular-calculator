@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { showResultService } from "../calculate-services/show-result.service";
 import { calculateService } from "../calculate-services/calculate.service";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-calculator',
@@ -22,8 +23,8 @@ export class CalculatorComponent implements OnInit {
   calculationType: string = "";
   resultOnScreen: boolean = false;
 
-  onClick(number: HTMLButtonElement){
-    this.calculation += number.value;
+  onClick(number: MatButton){
+    this.calculation += number._elementRef.nativeElement.value;
     this.calculationShow = this.calculation;
     if (this.resultOnScreen){
       this.onClear();
@@ -38,9 +39,9 @@ export class CalculatorComponent implements OnInit {
     this.resultOnScreen = false;
   }
 
-  onCalculate(type: HTMLButtonElement){
+  onCalculate(type: MatButton){
     if(this.number1 === 0){
-      this.calculationType = type.value;
+      this.calculationType = type._elementRef.nativeElement.value;
       this.number1 = Number(this.calculation);
       this.calculation = "";
       this.calculationShow = this.calculateService.onCalculate(this.calculationShow, this.calculationType);
