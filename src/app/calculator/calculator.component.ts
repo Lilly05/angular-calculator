@@ -11,41 +11,39 @@ import {MatButton} from "@angular/material/button";
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor(private showResultService: showResultService, private calculateService: calculateService) { }
+  constructor(private showResultService: showResultService, private calculateService: calculateService) {
+  }
 
   ngOnInit(): void {
   }
+
   title = 'taschenrechner';
   calculation: string = "";
   calculationSaved: string = "";
   number1: number = 0;
   number2: number = 0;
   calculationType: string = "";
-  resultOnScreen: boolean = false;
 
-  onClick(number: MatButton){
+  onClick(number: MatButton) {
     this.calculation += number._elementRef.nativeElement.value;
     this.calculationSaved = this.calculation;
-    if (this.resultOnScreen){
-      this.onClear();
-    }
   }
 
-  onClear(){
+  onClear() {
     this.calculation = "";
     this.calculationSaved = "";
     this.number1 = 0;
     this.number2 = 0;
-    this.resultOnScreen = false;
+    this.calculationType = "";
   }
 
-  onCalculate(type: MatButton){
-    if(this.number1 === 0){
+  onCalculate(type: MatButton) {
+    if (this.number1 === 0) {
       this.calculationType = String(type._elementRef.nativeElement.value);
       this.number1 = Number(this.calculation);
       this.calculationSaved = this.calculation;
       this.calculationSaved = this.calculateService.onCalculate(this.calculation, this.calculationType);
-    }else {
+    } else {
       this.calculation = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
       this.number1 = Number(this.calculation);
       this.calculationSaved = this.calculation;
@@ -55,8 +53,9 @@ export class CalculatorComponent implements OnInit {
     this.calculation = "";
   }
 
-  onResult(){
+  onResult() {
     this.calculationSaved = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
-    this.resultOnScreen = true;
+    this.number1 = Number(this.calculationSaved);
+    this.calculation = "";
   }
 }
