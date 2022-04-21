@@ -2,21 +2,21 @@ import {calculateService} from "./calculate.service";
 
 export class showResultService {
 
-  onResult(number1: number, number2: number, calculation: string , calculationShow: string, calculationType: string) {
+  onResult(number1: number, number2: number, calculation: string , calculationType: string) {
     if (number1 !== 0) {
       number2 = Number(calculation);
       if (calculationType === "+") {
-        calculationShow = String(number1 + number2);
+        calculation = String(number1 + number2);
       } else if (calculationType === "-") {
-        calculationShow = String(number1 - number2);
+        calculation = String(number1 - number2);
       } else if (calculationType === "*") {
-        calculationShow = String(number1 * number2);
+        calculation = String(number1 * number2);
       } else if (calculationType === "/") {
-        calculationShow = String(number1 / number2);
+        calculation = String(number1 / number2);
       }
     }else{
-      calculationShow = "";
+      calculation = "";
       }
-    return calculationShow;
+    return calculation;
     }
 }

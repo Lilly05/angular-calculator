@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent} from "./calculator/calculator.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {calculateService} from "./calculate-services/calculate.service";
+import {showResultService} from "./calculate-services/show-result.service";
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
       MatButtonModule
   ],
-  providers: [],
+  providers: [calculateService, showResultService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

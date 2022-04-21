@@ -1,6 +1,15 @@
+import {MatButton} from "@angular/material/button";
+import {showResultService} from "./show-result.service";
+import {Injectable} from "@angular/core";
+
+@Injectable()
 export class calculateService{
-  onCalculate(calculationShow: string, calculationType:string){
-    calculationShow += calculationType;
-    return calculationShow;
+
+  constructor() {
+  }
+
+  onCalculate(calculation: string, calculationType:string){
+    calculation += calculationType;
+    return calculation;
   }
 }
