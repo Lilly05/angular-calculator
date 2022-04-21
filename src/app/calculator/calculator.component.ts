@@ -7,7 +7,7 @@ import {MatButton} from "@angular/material/button";
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css'],
-  providers: [showResultService, calculateService]
+  // providers: [showResultService, calculateService]
 })
 export class CalculatorComponent implements OnInit {
 
@@ -17,14 +17,15 @@ export class CalculatorComponent implements OnInit {
   }
   title = 'taschenrechner';
   calculation: string = "";
+  calculationSaved: string = "";
   number1: number = 0;
   number2: number = 0;
   calculationType: string = "";
   resultOnScreen: boolean = false;
 
   onClick(number: MatButton){
-    this.calculation = "";
     this.calculation += number._elementRef.nativeElement.value;
+    this.calculationSaved = this.calculation;
     if (this.resultOnScreen){
       this.onClear();
     }
@@ -32,6 +33,7 @@ export class CalculatorComponent implements OnInit {
 
   onClear(){
     this.calculation = "";
+    this.calculationSaved = "";
     this.number1 = 0;
     this.number2 = 0;
     this.resultOnScreen = false;
@@ -41,17 +43,20 @@ export class CalculatorComponent implements OnInit {
     if(this.number1 === 0){
       this.calculationType = String(type._elementRef.nativeElement.value);
       this.number1 = Number(this.calculation);
-      this.calculation = this.calculateService.onCalculate(this.calculation, this.calculationType);
+      this.calculationSaved = this.calculation;
+      this.calculationSaved = this.calculateService.onCalculate(this.calculation, this.calculationType);
     }else {
       this.calculation = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
       this.number1 = Number(this.calculation);
+      this.calculationSaved = this.calculation;
       this.calculationType = type._elementRef.nativeElement.value;
-      this.calculation = this.calculateService.onCalculate(this.calculation, this.calculationType);
+      this.calculationSaved = this.calculateService.onCalculate(this.calculation, this.calculationType);
     }
+    this.calculation = "";
   }
 
   onResult(){
-    this.calculation = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
+    this.calculationSaved = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
     this.resultOnScreen = true;
   }
 }
