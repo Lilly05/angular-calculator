@@ -41,9 +41,15 @@ export class CalculatorComponent implements OnInit {
 
   onCalculate(type: MatButton){
     if(this.number1 === 0){
-      this.calculationType = type._elementRef.nativeElement.value;
+      this.calculationType = String(type._elementRef.nativeElement.value);
       this.number1 = Number(this.calculation);
       this.calculation = "";
+      this.calculationShow = this.calculateService.onCalculate(this.calculationShow, this.calculationType);
+    }else {
+      this.calculationShow = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationShow, this.calculationType);
+      this.number1 = Number(this.calculationShow);
+      this.calculation = "";
+      this.calculationType = type._elementRef.nativeElement.value;
       this.calculationShow = this.calculateService.onCalculate(this.calculationShow, this.calculationType);
     }
   }

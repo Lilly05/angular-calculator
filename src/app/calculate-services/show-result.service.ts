@@ -1,3 +1,5 @@
+import {calculateService} from "./calculate.service";
+
 export class showResultService {
 
   onResult(number1: number, number2: number, calculation: string , calculationShow: string, calculationType: string) {
@@ -12,13 +14,9 @@ export class showResultService {
       } else if (calculationType === "/") {
         calculationShow = String(number1 / number2);
       }
-      return calculationShow;
     }else{
-      this.onClear(calculation, calculationShow);
+      calculationShow = "";
       }
+    return calculationShow;
     }
-      onClear(calculation: string, calculationShow: string){
-        calculationShow = "";
-        return calculationShow;
-  }
 }
