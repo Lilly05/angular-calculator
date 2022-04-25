@@ -17,7 +17,6 @@ export class showResultService {
     }else{
       calculation = "";
       }
-    console.log("result" + calculation);
     return calculation;
     }
 }
