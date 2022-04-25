@@ -55,7 +55,7 @@ export class CalculatorComponent implements OnInit {
 
   onResult() {
     this.calculationSaved = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
-    this.number1 = Number(this.calculationSaved);
-    this.calculation = "";
+    this.number1 = 0;
+    this.calculation = this.calculationSaved;
   }
 }
