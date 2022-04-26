@@ -2,25 +2,25 @@
   <p>{{calculationSaved}}</p>
   <hr>
   <div class="container text-center">
-    <div class="row1">
+    <div class="row">
       <button mat-raised-button type="button" class="btn col-md-1" value="1" (click)="onClick(calculationButton1)" #calculationButton1>1</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="2" (click)="onClick(calculationButton2)" #calculationButton2>2</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="3" (click)="onClick(calculationButton3)" #calculationButton3>3</button>
       <button mat-raised-button color="primary" type="button" class="btn col-md-1" value="+" (click)="onCalculate(plusButton)" #plusButton>+</button>
     </div>
-    <div class="row2">
+    <div class="row">
       <button mat-raised-button type="button" class="btn col-md-1" value="4" (click)="onClick(calculationButton4)" #calculationButton4>4</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="5" (click)="onClick(calculationButton5)" #calculationButton5>5</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="6" (click)="onClick(calculationButton6)" #calculationButton6>6</button>
       <button mat-raised-button color="primary" type="button" class="btn col-md-1" value="-" (click)="onCalculate(minusButton)" #minusButton>-</button>
     </div>
-    <div class="row3">
+    <div class="row">
       <button mat-raised-button type="button" class="btn col-md-1" value="7" (click)="onClick(calculationButton7)" #calculationButton7>7</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="8" (click)="onClick(calculationButton8)" #calculationButton8>8</button>
       <button mat-raised-button type="button" class="btn col-md-1" value="9" (click)="onClick(calculationButton9)" #calculationButton9>9</button>
       <button mat-raised-button color="primary" type="button" class="btn col-md-1" value="*" (click)="onCalculate(multiplyButton)" #multiplyButton>*</button>
     </div>
-    <div class="row4">
+    <div class="row">
       <button mat-raised-button type="button" class="btn col-md-1" value="0" (click)="onClick(calculationButton0)" #calculationButton0>0</button>
       <button mat-raised-button color="warn" type="button" class="btn btn-danger col-md-1" (click)="onClear()">clear</button>
       <button mat-raised-button color="primary" type="button" class="btn btn-primary col-md-1" (click)="onResult()">=</button>
