@@ -20,8 +20,7 @@ export class CalculatorComponent implements OnInit {
   title = 'taschenrechner';
   calculation: string = "";
   calculationSaved: string = "";
-  number1: number = 0;
-  number2: number = 0;
+  number: number = 0;
   calculationType: string = "";
 
   onClick(number: MatButton) {
@@ -32,20 +31,19 @@ export class CalculatorComponent implements OnInit {
   onClear() {
     this.calculation = "";
     this.calculationSaved = "";
-    this.number1 = 0;
-    this.number2 = 0;
+    this.number = 0;
     this.calculationType = "";
   }
 
   onCalculate(type: MatButton) {
-    if (this.number1 === 0) {
+    if (this.number === 0) {
       this.calculationType = String(type._elementRef.nativeElement.value);
-      this.number1 = Number(this.calculation);
+      this.number = Number(this.calculation);
       this.calculationSaved = this.calculation;
       this.calculationSaved = this.calculateService.onCalculate(this.calculation, this.calculationType);
     } else {
-      this.calculation = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
-      this.number1 = Number(this.calculation);
+      this.calculation = this.showResultService.onResult(this.number, this.calculation, this.calculationType);
+      this.number = Number(this.calculation);
       this.calculationSaved = this.calculation;
       this.calculationType = type._elementRef.nativeElement.value;
       this.calculationSaved = this.calculateService.onCalculate(this.calculation, this.calculationType);
@@ -54,8 +52,8 @@ export class CalculatorComponent implements OnInit {
   }
 
   onResult() {
-    this.calculationSaved = this.showResultService.onResult(this.number1, this.number2, this.calculation, this.calculationType);
-    this.number1 = 0;
+    this.calculationSaved = this.showResultService.onResult(this.number, this.calculation, this.calculationType);
+    this.number = 0;
     this.calculation = this.calculationSaved;
   }
 }
